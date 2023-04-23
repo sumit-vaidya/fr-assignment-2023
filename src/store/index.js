@@ -2,20 +2,20 @@ import { createStore } from "vuex";
 import ReceipeService from "../services/ReceipeService";
 import LogService from "../services/LogService";
 
-export const cgiState = {
+export const receipeState = {
   receipes: [],
   ingredients: [],
   logs: [],
 };
 
-export const cgiGetters = {
+export const receipeGetters = {
   getReceipes: (state) => state.receipes,
   getIngredients: (state) => state.ingredients,
-  receipesByIngredients: (state) => state.filteredReceipes,
+  getReceipesByIngredients: (state) => state.filteredReceipes,
   getLogs: (state) => state.logs,
 };
 
-export const cgiMutations = {
+export const receipeMutations = {
   SET_RECEIPES(state, receipes) {
     state.receipes = receipes;
   },
@@ -30,7 +30,7 @@ export const cgiMutations = {
   },
 };
 
-export const cgiActions = {
+export const receipeActions = {
   getReceipes({ commit }) {
     ReceipeService.getReceipes().then((response) => {
       commit("SET_RECEIPES", response.data);
@@ -41,9 +41,9 @@ export const cgiActions = {
       commit("SET_INGREDIENTS", response.data);
     });
   },
-  receipesByIngredients({ commit }, selected) {
-    ReceipeService.receipesByIngredients(selected).then((response) => {
-      commit("RECEIPES_BY_INGREDIENTS", response.data);
+  getReceipesByIngredients({ commit }, selected) {
+    ReceipeService.getReceipesByIngredients(selected).then((response) => {
+      commit("RECEIPES_BY_INGREDIENTS", response);
     });
   },
   getLogs({ commit }, logType) {
@@ -54,10 +54,10 @@ export const cgiActions = {
 };
 
 const store = createStore({
-  state: cgiState,
-  getters: cgiGetters,
-  mutations: cgiMutations,
-  actions: cgiActions,
+  state: receipeState,
+  getters: receipeGetters,
+  mutations: receipeMutations,
+  actions: receipeActions,
 });
 
 export default store;

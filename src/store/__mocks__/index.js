@@ -3,14 +3,14 @@ import { createStore } from 'vuex';
 export const getters = {
     getReceipes: jest.fn(() => jest.fn().mockReturnValue([])),
     getIngredients: jest.fn(() => jest.fn().mockReturnValue([])),
-    receipesByIngredients: jest.fn(() => jest.fn().mockReturnValue([])),
+    getReceipesByIngredients: jest.fn(() => jest.fn().mockReturnValue([])),
     getLogs: jest.fn(() => jest.fn().mockReturnValue([])),
 };
 
 export const actions = {
     getReceipes: jest.fn(),
     getIngredients: jest.fn(),
-    receipesByIngredients: jest.fn(),
+    getReceipesByIngredients: jest.fn(),
     getLogs: jest.fn(),
 };
 

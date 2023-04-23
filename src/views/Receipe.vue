@@ -56,7 +56,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(["receipesByIngredients", "getReceipes"]),
+    ...mapActions(["getReceipesByIngredients", "getReceipes"]),
     getIngredient(receipe) {
       let ingredient = "";
       receipe?.ingredients?.forEach((item) => {
@@ -65,7 +65,7 @@ export default {
       return ingredient.slice(0, -2);
     },
     switchSelect(selected) {
-      this.receipesByIngredients(selected);
+      this.getReceipesByIngredients(selected);
     },
     setReceipeBtn(event) {
       if (event.target.value !== undefined) {

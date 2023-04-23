@@ -11,11 +11,16 @@ class ReceipeService {
     return axios.get(RECEIPE_API_BASE_URL.concat("/ingredients"));
   }
 
-  receipesByIngredients(ingredients) {
-    return axios.post(
-      RECEIPE_API_BASE_URL.concat("/receipesByIngredients"),
-      ingredients
-    );
+  async getReceipesByIngredients(ingredients) {
+    const response = await axios.get(RECEIPE_API_BASE_URL.concat("/receipes"));
+    return response.data.filter(item => ingredients.some(ele => item.ingredients.includes(ele)))
+    /*return axios.get(
+      RECEIPE_API_BASE_URL.concat("/receipesByIngredients"), {
+        params: {
+          ingredients: JSON.stringify(ingredients)
+        },
+      }      
+    );*/
   }
 }
 
