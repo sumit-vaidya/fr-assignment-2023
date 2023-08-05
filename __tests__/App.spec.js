@@ -1,21 +1,19 @@
 import { createStoreMocks } from "../src/store/__mocks__";
-import { createRouter, createWebHistory } from 'vue-router'
 import { mount, shallowMount } from "@vue/test-utils";
-import router from "./../src/router/index";
 import App from "./../src/App.vue";
 
-describe("Mounted App", () => {
-  const routers = createRouter({
-    history: createWebHistory(),
-    routes: router,
-  })
+const mockRouter = {
+  meta: {},
+};
 
+describe("Mounted App", () => {
   function factory(store, useMount = false, computed = {}) {
     const args = [
       App,
       {
         global: {
-          plugins: [createStoreMocks(store).store, routers],
+          mock: {$route: mockRouter},
+          plugins: [createStoreMocks(store).store],
         },
         computed: { ...App.computed, ...computed },
       },

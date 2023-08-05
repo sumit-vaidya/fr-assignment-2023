@@ -13,7 +13,9 @@ class ReceipeService {
 
   async getReceipesByIngredients(ingredients) {
     const response = await axios.get(RECEIPE_API_BASE_URL.concat("/receipes"));
-    return response.data.filter(item => ingredients.some(ele => item.ingredients.includes(ele)))
+    return response.data.filter((item) =>
+      ingredients.some((ele) => item.ingredients.includes(ele))
+    );
     /*return axios.get(
       RECEIPE_API_BASE_URL.concat("/receipesByIngredients"), {
         params: {
