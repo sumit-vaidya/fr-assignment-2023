@@ -40,17 +40,17 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   name: "Receipe",
-  props: ["receipes", "ingredients"],
   data() {
     return {
       isReceipeBtn: true,
     };
   },
   computed: {
+    ...mapState(["ingredients"]),
     ...mapGetters({
       receipes: "getReceipes",
     }),
@@ -67,10 +67,8 @@ export default {
     switchSelect(selected) {
       this.getReceipesByIngredients(selected);
     },
-    setReceipeBtn(event) {
-      if (event.target.value !== undefined) {
-        this.isReceipeBtn = false;
-      }
+    setReceipeBtn(event) {      
+      this.isReceipeBtn = (event.target.value !== undefined) ? false :  true;
     },
   },
   mounted() {

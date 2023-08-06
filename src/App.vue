@@ -11,20 +11,14 @@
     </nav>
   </header>
 
-  <router-view :receipes="receipes" :ingredients="ingredients"></router-view>
+  <router-view/>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "App",
-  computed: {
-    ...mapGetters({
-      receipes: "getReceipes",
-      ingredients: "getIngredients",
-    }),
-  },
   methods: {
     ...mapActions(["getReceipes", "getIngredients"]),
   },
@@ -33,7 +27,7 @@ export default {
     this.getIngredients();
   },
 };
-</script>
+</script>   
 
 <style>
 #app {
