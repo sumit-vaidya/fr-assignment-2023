@@ -67,8 +67,8 @@ export default {
     switchSelect(selected) {
       this.getReceipesByIngredients(selected);
     },
-    setReceipeBtn(event) {      
-      this.isReceipeBtn = (event.target.value !== undefined) ? false :  true;
+    setReceipeBtn(event) {
+      this.isReceipeBtn = event.target.value !== undefined ? false : true;
     },
   },
   mounted() {

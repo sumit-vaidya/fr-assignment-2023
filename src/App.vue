@@ -11,7 +11,7 @@
     </nav>
   </header>
 
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
@@ -20,14 +20,13 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   methods: {
-    ...mapActions(["getReceipes", "getIngredients"]),
+    ...mapActions(["getIngredients"]),
   },
   mounted() {
-    this.getReceipes();
     this.getIngredients();
   },
 };
-</script>   
+</script>
 
 <style>
 #app {
